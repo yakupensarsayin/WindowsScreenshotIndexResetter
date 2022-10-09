@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsScreenshotIndexResetter", "WindowsScreenshotIndexResetter.csproj", "{64EE8968-5654-489B-8D25-7AB1C5DEE07D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64EE8968-5654-489B-8D25-7AB1C5DEE07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64EE8968-5654-489B-8D25-7AB1C5DEE07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64EE8968-5654-489B-8D25-7AB1C5DEE07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64EE8968-5654-489B-8D25-7AB1C5DEE07D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86AB4058-8CB5-4296-899C-4DC2A8770306}
+	EndGlobalSection
+EndGlobal
