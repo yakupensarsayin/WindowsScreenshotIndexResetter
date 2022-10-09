@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("> Ekran Görüntüsü sayacını sıfırlamak için E tuşuna, uygulamadan çıkmak için ESC tuşuna basınız.");
+            Console.WriteLine("> Press the E key to reset the Screenshot Counter, and the ESC key to exit the application.");
             ConsoleKeyInfo inputKey;
             do
             {
@@ -12,22 +12,46 @@
 
                 if (inputKey.Key == ConsoleKey.E)
                 {
-                    Microsoft.Win32.RegistryKey registryKey = Microsoft.Win32.Registry.CurrentUser.
-                        OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer", true);
-                    string currentScreenshotIndexValue = registryKey.GetValue("ScreenshotIndex").ToString();
-                    Console.WriteLine($"> Şu anki Ekran Görüntüsü sayacınız --> {currentScreenshotIndexValue}");
-                    registryKey.SetValue("ScreenshotIndex", "1");
-                    registryKey.Close();
-                    Console.WriteLine("> Ekran Görüntüsü sayacı başarıyla sıfırlandı.");
-                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("Çıkmak için herhangi bir tuşa basınız...");
-                    Console.ReadKey();
-                    Environment.Exit(0);
+
+                    try
+                    {
+                        Microsoft.Win32.RegistryKey registryKey = Microsoft.Win32.Registry.CurrentUser.
+                            OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer", true);
+                        string currentScreenshotIndexValue = registryKey.GetValue("ScreenshotIndex").ToString();
+                        Console.WriteLine($"> Your Screenshot Counter before reset --> {currentScreenshotIndexValue}");
+                        registryKey.SetValue("ScreenshotIndex", 1);
+                        registryKey.Close();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("> Screenshot Counter reset successfully.");
+                    }
+                    catch (NullReferenceException)
+                    {
+                        Console.WriteLine("> The specified directory could not be found. The application will be closed.");
+                        CloseApp();
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("> An unexpected error has occurred. The application will be closed.");
+                        CloseApp();
+                    }
+
+                    CloseApp();
+
                 }
 
             } while (inputKey.Key != ConsoleKey.Escape);
+
             Environment.Exit(0);
            
+        }
+
+        static void CloseApp()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Press any key to exit...");
+            Console.ResetColor();
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }
